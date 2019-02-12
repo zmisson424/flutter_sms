@@ -50,7 +50,7 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
   public func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
     NSLog("SENDSMS: On callback controller")
     NSLog("SENDSMS: Result raw %@", result.rawValue)
-    NSLog("SENDSMS: Result value %@", result.value)
+    //NSLog("SENDSMS: Result value %@", result.value)
     NSLog("SENDSMS: Result %@", result)
     let map: [MessageComposeResult: String] = [
         MessageComposeResult.sent: "sent",
