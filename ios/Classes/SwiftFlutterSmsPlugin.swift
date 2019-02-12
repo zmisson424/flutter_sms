@@ -25,7 +25,7 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
         )
       #else
         if (MFMessageComposeViewController.canSendText()) {
-          print("SENDSMS: Inside Package sending iOS SMS")
+          NSLog("SENDSMS: Inside Package sending iOS SMS")
           let controller = MFMessageComposeViewController()
           controller.body = _arguments["message"] as? String
           controller.recipients = _arguments["recipients"] as? [String]
@@ -48,7 +48,7 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
   }
 
   public func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-    print("SENDSMS: On callback controller")
+    NSLog("SENDSMS: On callback controller")
     let map: [MessageComposeResult: String] = [
         MessageComposeResult.sent: "sent",
         MessageComposeResult.cancelled: "cancelled",
