@@ -49,6 +49,7 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
 
   public func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
     NSLog("SENDSMS: On callback controller")
+    NSLog("SENDSMS: Result %@", result.rawValue)
     let map: [MessageComposeResult: String] = [
         MessageComposeResult.sent: "sent",
         MessageComposeResult.cancelled: "cancelled",
@@ -56,6 +57,9 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
     ]
     if let callback = self.result {
         callback(map[result])
+    }
+    else{
+      NSLog("Dafaq is happening?")
     }
     UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
   }
