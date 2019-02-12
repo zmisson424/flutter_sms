@@ -3,7 +3,7 @@ import UIKit
 import MessageUI
 
 public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControllerDelegate, MFMessageComposeViewControllerDelegate {
-    var result: FlutterResult?
+    var result: FlutterResult
     var _arguments = [String: Any]()
 
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -25,6 +25,7 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
         )
       #else
         if (MFMessageComposeViewController.canSendText()) {
+          print("SENDSMS Inside package for SMS")
           let controller = MFMessageComposeViewController()
           controller.body = _arguments["message"] as? String
           controller.recipients = _arguments["recipients"] as? [String]
