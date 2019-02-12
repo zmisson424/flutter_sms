@@ -68,11 +68,11 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
             break;
         }
 
-    let map: [MessageComposeResult: String] = [
-        MessageComposeResult.sent: "sent",
-        MessageComposeResult.cancelled: "cancelled",
-        MessageComposeResult.failed: "failed",
-    ]
+    // let map: [MessageComposeResult: String] = [
+    //     MessageComposeResult.sent: "sent",
+    //     MessageComposeResult.cancelled: "cancelled",
+    //     MessageComposeResult.failed: "failed",
+    // ]
     if let callback = self.result {
         callback("Sent")
     }
