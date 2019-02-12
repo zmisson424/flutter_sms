@@ -6,6 +6,7 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
     var result: FlutterResult?
     var _arguments = [String: Any]()
 
+
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_sms", binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterSmsPlugin()
@@ -69,13 +70,13 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
             break;
         }
 
-    // let map: [MessageComposeResult: String] = [
-    //     MessageComposeResult.sent: "sent",
-    //     MessageComposeResult.cancelled: "cancelled",
-    //     MessageComposeResult.failed: "failed",
-    // ]
+    let map: [MessageComposeResult: String] = [
+        MessageComposeResult.sent: "sent",
+        MessageComposeResult.cancelled: "cancelled",
+        MessageComposeResult.failed: "failed",
+    ]
     if let callback = self.result {
-        callback("Sent")
+        callback(map[result])
     }
     else{
       NSLog("Dafaq is happening?")
