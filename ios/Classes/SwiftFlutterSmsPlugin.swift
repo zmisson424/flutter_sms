@@ -48,11 +48,11 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
   }
 
   public func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-    let map: [MessageComposeResult: String] = [
-        MessageComposeResult.sent: "sent",
-        MessageComposeResult.cancelled: "cancelled",
-        MessageComposeResult.failed: "failed",
-    ]
+    // let map: [MessageComposeResult: String] = [
+    //     MessageComposeResult.sent: "sent",
+    //     MessageComposeResult.cancelled: "cancelled",
+    //     MessageComposeResult.failed: "failed",
+    // ]
     self.result {
         "Success!"
     }
