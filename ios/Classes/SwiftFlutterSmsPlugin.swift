@@ -60,6 +60,7 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
         case MessageComposeResult.failed.rawValue:
             print("Message failed")
             NSLog("SENDSMS: Callback failed")
+            self.result("Cancelled!")
         case MessageComposeResult.sent.rawValue:
             print("Message was sent")
             NSLog("SENDSMS: Callback sent")
