@@ -5,6 +5,7 @@ import MessageUI
 public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControllerDelegate, MFMessageComposeViewControllerDelegate {
     var result: FlutterResult?
     var _arguments = [String: Any]()
+    FlutterResult flutterResult
 
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_sms", binaryMessenger: registrar.messenger())
@@ -14,6 +15,7 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     _arguments = call.arguments as! [String : Any];
+    flutterResult = result
     switch call.method {
     case "sendSMS":
       #if targetEnvironment(simulator)
