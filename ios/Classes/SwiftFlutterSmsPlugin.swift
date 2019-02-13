@@ -27,7 +27,6 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
         )
       #else
         if (MFMessageComposeViewController.canSendText()) {
-          NSLog("SENDSMS: Inside Package sending iOS SMS")
           let controller = MFMessageComposeViewController()
           controller.body = _arguments["message"] as? String
           controller.recipients = _arguments["recipients"] as? [String]
@@ -50,26 +49,6 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
   }
 
   public func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-    NSLog("SENDSMS: On callback controller")
-    NSLog("SENDSMS: Result raw %@", result.rawValue)
-    //NSLog("SENDSMS: Result value %@", result.value)
-    // NSLog("SENDSMS: Result %@", result)
-
-    switch (result.rawValue) {
-            case MessageComposeResult.cancelled.rawValue:
-            print("Message was cancelled")
-            NSLog("SENDSMS: Callback cancelled")
-        case MessageComposeResult.failed.rawValue:
-            print("Message failed")
-            NSLog("SENDSMS: Callback failed")
-            //let self.result("Cancelled!")
-        case MessageComposeResult.sent.rawValue:
-            print("Message was sent")
-            NSLog("SENDSMS: Callback sent")
-        default:
-            break;
-        }
-
     let map: [MessageComposeResult: String] = [
         MessageComposeResult.sent: "sent",
         MessageComposeResult.cancelled: "cancelled",
@@ -77,9 +56,6 @@ public class SwiftFlutterSmsPlugin: NSObject, FlutterPlugin, UINavigationControl
     ]
     if let callback = self.result {
         callback(map[result])
-    }
-    else{
-      NSLog("Dafaq is happening?")
     }
     UIApplication.shared.keyWindow?.rootViewController?.dismiss(animated: true, completion: nil)
   }
